@@ -18,7 +18,7 @@ describe("creation", () => {
         expect(voucherRepository.createVoucher).toBeCalled()
     });
 
-    it("should insert a voucher,with already created voucher", async () => {
+    it("should not insert a voucher,with already created voucher", async () => {
        const voucher = voucherFactory.voucherData(false);
 
         jest.spyOn(voucherRepository, "getVoucherByCode").mockImplementationOnce((): any => {
@@ -31,7 +31,7 @@ describe("creation", () => {
         expect(result.catch).toBe(409);
     });
 
-    it("should insert a voucher,with invalid input voucher", async () => {
+    it("should not insert a voucher,with invalid input voucher", async () => {
         const voucher = voucherFactory.voucherData(true);
  
          jest.spyOn(voucherRepository, "getVoucherByCode").mockImplementationOnce((): any => {
